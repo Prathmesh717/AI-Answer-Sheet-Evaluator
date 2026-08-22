@@ -1,70 +1,502 @@
-# Getting Started with Create React App
+# 📝 AI-Based Answer Sheet Evaluation System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An **AI-powered automated answer sheet evaluation platform** that evaluates student answer sheets against a master answer key using **semantic similarity, keyword coverage, structural analysis, and intelligent PDF/OCR processing**.
 
-## Available Scripts
+The system is designed to reduce manual evaluation effort while providing consistent, scalable, and data-driven assessment of student answers.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 🚀 Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Traditional answer-sheet evaluation is time-consuming and can introduce inconsistencies between evaluators.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+This project automates the evaluation workflow:
 
-### `npm test`
+```text
+Master Answer Key
+       │
+       ▼
+Student Answer Sheets
+       │
+       ▼
+PDF Text Extraction / OCR
+       │
+       ▼
+Question & Answer Parsing
+       │
+       ▼
+AI-Based Evaluation Engine
+       │
+       ├── Semantic Similarity
+       ├── Keyword Coverage
+       ├── Structure Analysis
+       └── Answer Length Analysis
+       │
+       ▼
+Marks + Feedback + Analytics
+       │
+       ├── Dashboard
+       ├── Excel Reports
+       ├── PDF Reports
+       └── Email Results
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+# ✨ Key Features
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 🤖 AI-Based Answer Evaluation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The evaluation engine compares student answers against the master answer key using multiple criteria.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Evaluation Criteria
 
-### `npm run eject`
+| Criterion                | Weight |
+| ------------------------ | -----: |
+| Semantic Similarity      |    60% |
+| Keyword Coverage         |    25% |
+| Structure & Completeness |    10% |
+| Length Appropriateness   |     5% |
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The weighted evaluation helps the system assess **meaning and conceptual understanding**, rather than relying only on exact keyword matching.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+---
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 🧠 Semantic Similarity
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The system uses:
 
-## Learn More
+**Sentence Transformers — `all-MiniLM-L6-v2`**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+to generate semantic embeddings and calculate similarity between:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```text
+Master Answer
+      ↓
+Student Answer
+      ↓
+Sentence Embeddings
+      ↓
+Cosine Similarity
+      ↓
+Semantic Score
+```
 
-### Code Splitting
+This allows answers with different wording but similar meaning to receive appropriate credit.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 🔑 Keyword Coverage
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The system identifies important technical terms associated with different subjects and checks whether the student's answer covers the expected concepts.
 
-### Making a Progressive Web App
+Supported subject areas include:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* Artificial Intelligence
+* Cyber Security
+* Blockchain
+* Software Engineering
+* Constitutional Law
 
-### Advanced Configuration
+The framework can be extended with additional subjects and technical terminology.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## 📄 PDF Answer Sheet Processing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Students can submit answer sheets as PDF files.
 
-### `npm run build` fails to minify
+The system supports:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* Digital PDFs
+* Scanned PDFs
+* OCR-based extraction
+* Batch PDF processing
+* Temporary file processing
+* Automatic question-answer parsing
+
+# 📊 Evaluation & Analytics
+
+The platform provides detailed evaluation results including:
+
+* Student name
+* Roll number
+* Question-wise marks
+* Total marks
+* Maximum marks
+* Percentage
+* Evaluation feedback
+* Subject-wise performance
+* Class-level analytics
+
+The frontend includes analytics and visualization components for reviewing evaluation results.
+
+---
+
+# 📈 Question-Level Evaluation
+
+The system supports different question types.
+
+### Main Questions
+
+```text
+Q1 → 10 marks
+Q2 → 10 marks
+Q3 → 10 marks
+```
+
+### Sub-Questions
+
+```text
+Q1a → 5 marks
+Q1b → 5 marks
+Q2a → 5 marks
+```
+
+The evaluator automatically determines the question type and corresponding maximum marks.
+
+# 📑 Automated Reports
+
+Evaluation results can be saved and exported for further analysis.
+
+Supported outputs include:
+
+* Excel evaluation reports
+* PDF documents
+* Detailed feedback
+* Consolidated results
+
+The system can also optionally send evaluation results through email.
+
+---
+
+# 🔐 Authentication
+
+The application includes user authentication with:
+
+* User registration
+* Login
+* Protected routes
+* JWT-based authentication
+* Password hashing
+* User-specific evaluation access
+
+---
+
+# 💳 Subscription & Payments
+
+The application includes subscription functionality with **Razorpay** integration.
+
+The frontend provides pricing and subscription-related components, allowing the platform to be extended into a SaaS-based evaluation service.
+
+
+## AI / Machine Learning
+
+* **Sentence Transformers**
+* **all-MiniLM-L6-v2**
+* **PyTorch**
+* **NVIDIA NIM**
+* Semantic similarity
+* Natural language processing
+
+## PDF & OCR
+
+* **PyPDF2**
+* **pdf2image**
+* **Pillow**
+* **ReportLab**
+* NVIDIA NIM Vision OCR
+
+## Database
+
+* **MongoDB**
+* **PyMongo**
+* **Motor**
+
+## Authentication
+
+* **JWT**
+* **python-jose**
+* **Passlib / bcrypt**
+
+## Payments
+
+* **Razorpay**
+
+## Data Processing
+
+* **Pandas**
+* **NumPy**
+* **OpenPyXL**
+
+---
+
+# 📂 Project Structure
+
+```text
+AI-Based-Answersheet-Eval-main/
+│
+├── backend/
+│   ├── app/
+│   │   ├── auth.py
+│   │   ├── config.py
+│   │   ├── database.py
+│   │   ├── evaluation_engine.py
+│   │   ├── models.py
+│   │   │
+│   │   └── routes/
+│   │       ├── auth.py
+│   │       ├── evaluation.py
+│   │       ├── evaluations.py
+│   │       ├── ocr.py
+│   │       └── payments.py
+│   │
+│   ├── main.py
+│   ├── requirements.txt
+│   ├── nvidia_nim_migration_guide.py
+│   └── nvidia_nim_ocr_processor.py
+│
+├── public/
+│   ├── index.html
+│   ├── favicon.ico
+│   ├── logo192.png
+│   ├── logo512.png
+│   └── manifest.json
+│
+├── src/
+│   ├── components/
+│   │   ├── Analytics.jsx
+│   │   ├── EvaluationPanel.jsx
+│   │   ├── PDFTools.jsx
+│   │   ├── Settings.jsx
+│   │   ├── Sidebar.jsx
+│   │   └── SubjectManager.jsx
+│   │
+│   ├── Pages/
+│   │   ├── Dashboard.jsx
+│   │   ├── HomePage.jsx
+│   │   ├── LoginPage.jsx
+│   │   ├── RegisterPage.jsx
+│   │   └── Pricingpage.jsx
+│   │
+│   ├── context/
+│   │   └── AppContext.jsx
+│   │
+│   ├── services/
+│   │   └── api.js
+│   │
+│   ├── subscription/
+│   │   ├── SubscriptionContext.jsx
+│   │   └── plans.js
+│   │
+│   ├── App.js
+│   ├── App.css
+│   └── index.js
+│
+├── evaluation_saver.py
+├── package.json
+├── package-lock.json
+└── README.md
+```
+
+# ▶️ Run the Backend
+
+From the `backend` directory:
+
+```bash
+uvicorn main:app --reload
+```
+
+The backend will run at:
+
+```text
+http://localhost:8000
+```
+
+FastAPI Swagger documentation:
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+# ⚛️ Frontend Setup
+
+Open another terminal and navigate to the project root:
+
+```bash
+cd AI-Based-Answersheet-Eval-main
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the React application:
+
+```bash
+npm start
+```
+
+The frontend will normally be available at:
+
+```text
+http://localhost:3000
+```
+
+---
+
+# 🔌 Core API Endpoints
+
+### Authentication
+
+```text
+POST /auth/register
+POST /auth/login
+```
+
+### Answer Evaluation
+
+```text
+POST /evaluation/evaluate-subject
+POST /evaluation/evaluate-multi-subject
+POST /evaluation/evaluate-batch
+```
+
+### OCR
+
+```text
+POST /ocr/extract-text
+POST /ocr/extract-text-batch
+```
+
+### Evaluation History
+
+```text
+GET /evaluations
+```
+
+### Payments
+
+Payment-related endpoints are provided through the payments router.
+
+For the complete API specification, open:
+
+```text
+http://localhost:8000/docs
+```
+
+---
+
+# 🧪 Example Evaluation Workflow
+
+### 1. Create an account
+
+Register through the application.
+
+### 2. Login
+
+Authenticate using your credentials.
+
+### 3. Select a subject
+
+Example:
+
+```text
+Artificial Intelligence
+```
+
+### 4. Upload the master answer key
+
+Upload the professor's/reference answer PDF.
+
+### 5. Upload student answer sheets
+
+Upload one or more student PDFs.
+
+### 6. Start evaluation
+
+The system:
+
+```text
+Extracts PDF text
+      ↓
+Runs OCR when necessary
+      ↓
+Detects questions
+      ↓
+Extracts student answers
+      ↓
+Calculates semantic similarity
+      ↓
+Checks keyword coverage
+      ↓
+Analyzes structure
+      ↓
+Calculates marks
+      ↓
+Generates feedback
+```
+
+### 7. Review results
+
+The dashboard displays student performance and evaluation analytics.
+
+### 8. Export results
+
+Results can be saved for further analysis and reporting.
+
+---
+
+# 📊 Evaluation Algorithm
+
+For every student answer, the system calculates a weighted score:
+
+```text
+Final Score =
+    Semantic Score × 0.60
+  + Keyword Score  × 0.25
+  + Structure Score × 0.10
+  + Length Score   × 0.05
+```
+
+This approach combines **semantic understanding with content coverage and answer quality**.
+
+---
+
+# 🎯 Benefits
+
+### For Teachers
+
+* Reduces manual evaluation time
+* Provides consistent evaluation
+* Supports batch processing
+* Generates structured reports
+* Provides student analytics
+
+### For Students
+
+* Faster feedback
+* Question-wise performance
+* Detailed evaluation results
+* Transparent scoring
+
+### For Institutions
+
+* Scalable evaluation infrastructure
+* Centralized evaluation records
+* Analytics-driven assessment
+* Potential SaaS deployment
+
+---
+
+
+
+
+
+
+
+
